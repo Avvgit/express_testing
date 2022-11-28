@@ -2,7 +2,7 @@ import request from 'supertest';
 import app from '../app.js';
 
 before(async () => {  
-  // create user
+  
   const payload = {
     'name': 'Alejo',
     'email': 'alejo_605@hotmail.com',

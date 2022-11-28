@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-export const isUserAuthenticated = (req, res, next) => {
+export const isUserAuthenticated = (req, res, next) => { //next si pasa o no pasa
   const authHeader = req.headers.authorization
 
   if (!authHeader) {
@@ -13,8 +13,8 @@ export const isUserAuthenticated = (req, res, next) => {
     let payload;
     if (token) {
       try {
-        payload = jwt.verify(token, 'secret-key') //valida qu eel token sea valido y que no haya expirado
-        next() //si no esta autentificado no pasa se queda hasta quepase el tiempo del token
+        payload = jwt.verify(token, 'secret-key')
+        next()
       } catch (e) {
         if (e instanceof jwt.JsonWebTokenError) {
           // if the error thrown is because the JWT is unauthorized, return a 401 error

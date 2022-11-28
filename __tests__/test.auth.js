@@ -7,7 +7,7 @@ const { expect } = chai;
 
 describe ('Test auth endpoints', ()=> {
   it('Allow create users', async ()=> {
-    const payload = {
+    const payload = { //recibde el payload
       'name': 'Miguel',
       'email': 'miguela@gmail.com',
       'password': '919191'

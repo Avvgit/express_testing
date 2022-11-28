@@ -34,14 +34,15 @@ export const getPassengerById = async (req, res) => {
 
 //crear un nuevo pasajero
 export const createPassenger = async (req, res) => {
-  try {
-      await Passenger.create(req.body);
-      res.json({
-          "message": "Pasajero Creado",
-      });
-  } catch (err) {
-      console.log(err);
-  }
+    try {
+        const passenger = await Passenger.create(req.body);
+        res.status(201).json({
+            "message": "Pasajero Created",
+            "id": passenger.id
+        });
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 //modificar o actualizar un pasajero por id

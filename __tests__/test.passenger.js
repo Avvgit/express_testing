@@ -2,7 +2,7 @@ import request from 'supertest';
 import chai from 'chai';
 import app from '../app.js';
 import getToken from './utils.js';
-import Passenger from '../models/passenger';
+import Passenger from '../models/passenger.js';
 import { before } from 'mocha';
 
 const { expect } = chai;
@@ -27,7 +27,7 @@ describe('Test the passengers endpoints', () => {
       lastName: 'Hernandez',
       mlastname: 'Aveiro',
       email: 'testmail@larnu.com',
-      phone: 40,
+      phone: 404561321,
     })
   })
 
@@ -73,7 +73,7 @@ describe('Test the passengers endpoints', () => {
     expect(status).to.equal(200);
     expect(body).to.be.a('object');
     
-    // retrieve the object from the database
+    // recuperar el objeto de la base de datos
     const passenger = await Passenger.findByPk(passenger1.id);
     expect(passenger.name).to.equal(payload.name);
   });
@@ -88,7 +88,7 @@ describe('Test the passengers endpoints', () => {
     expect(status).to.equal(200);
     expect(body).to.be.a('object');
     
-    // retrieve the object from the database
+    // recuperar el objeto de la base de datos
     const passenger = await Passenger.findByPk(passengerToDelete.id);
     expect(passenger).to.equal(null);
   });
